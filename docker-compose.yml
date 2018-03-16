@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./nginx
+    depends_on:
+      - php
+    ports:
+      - 8080:80
+    volumes:
+      - ./app/public:/var/www/public
+
+  php:
+    build:
+      context: ./phpfpm
+    volumes:
+      - ./app/public:/var/www/public
+
+#  mysql:
+#    restart: always
+#    image: mysql:latest
+#    volumes:
+#      - ./mysql:/var/lib/mysql
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=password
+#      - MYSQL_DATABASE=test
+#    ports:
+#      - 3306:3306
