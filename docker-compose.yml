@@ -8,13 +8,13 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./app/public:/var/www/public
+      - ./app:/var/www
 
   php:
     build:
       context: ./phpfpm
     volumes:
-      - ./app/public:/var/www/public
+      - ./app:/var/www
 
 #  mysql:
 #    restart: always
